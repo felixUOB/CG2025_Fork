@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 project(glm)
 set(GLM_VERSION "0.9.7")
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "cmake")
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
@@ -139,7 +139,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	#ctest_enable_coverage()
 endif()
 
-include_directories("${PROJECT_SOURCE_DIR}")
+include_directories("../../../..")
 include_directories("${PROJECT_SOURCE_DIR}/test/external")
 
 add_subdirectory(glm)
@@ -156,14 +156,14 @@ write_basic_package_version_file(
 
 # build tree package config
 configure_file(
-    cmake/glmBuildConfig.cmake.in
+        cmake/glmBuildConfig.cmake.in
     glmConfig.cmake
     @ONLY
 )
 
 # install tree package config
 configure_package_config_file(
-    cmake/glmConfig.cmake.in
+        cmake/glmConfig.cmake.in
     ${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake
     INSTALL_DESTINATION ${GLM_INSTALL_CONFIGDIR}
     PATH_VARS CMAKE_INSTALL_INCLUDEDIR
